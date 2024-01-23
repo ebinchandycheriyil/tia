@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>true</AutoNumber>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="MODE" Datatype="Bool" Accessibility="Public" />
+  </Section>
+  <Section Name="Output" />
+  <Section Name="InOut">
+    <Member Name="MIN" Datatype="Int" Accessibility="Public" />
+    <Member Name="SEC" Datatype="Int" Accessibility="Public" />
+    <Member Name="TIME" Datatype="Time" Accessibility="Public" />
+  </Section>
+  <Section Name="Temp">
+    <Member Name="MUL VAL" Datatype="DInt" />
+  </Section>
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" Accessibility="Public" />
+  </Section>
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>TIME CONV</Name>
+      <Namespace />
+      <Number>3</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="IF" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Access Scope="LocalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="MODE" UId="25" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="26" />
+  <Token Text="THEN" UId="27" />
+  <NewLine Num="1" UId="28" />
+  <Blank Num="4" UId="29" />
+  <Access Scope="LocalVariable" UId="30">
+    <Symbol UId="31">
+      <Component Name="MUL VAL" UId="32" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="33" />
+  <Token Text=":=" UId="34" />
+  <Blank Num="1" UId="35" />
+  <Access Scope="Call" UId="36">
+    <Instruction Name="INT_TO_DINT" UId="37">
+      <Token Text="(" UId="38" />
+      <NamelessParameter UId="39">
+        <Access Scope="LocalVariable" UId="40">
+          <Symbol UId="41">
+            <Component Name="SEC" UId="42" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="43" />
+        <Token Text="+" UId="44" />
+        <Blank Num="1" UId="45" />
+        <Access Scope="LocalVariable" UId="46">
+          <Symbol UId="47">
+            <Component Name="MIN" UId="48" />
+          </Symbol>
+        </Access>
+        <Token Text="*" UId="49" />
+        <Access Scope="LiteralConstant" UId="50">
+          <Constant UId="51">
+            <ConstantValue UId="53">60</ConstantValue>
+          </Constant>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="55" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="56" />
+  <NewLine Num="1" UId="57" />
+  <Blank Num="4" UId="58" />
+  <Access Scope="LocalVariable" UId="59">
+    <Symbol UId="60">
+      <Component Name="MUL VAL" UId="61" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="62" />
+  <Token Text=":=" UId="63" />
+  <Blank Num="1" UId="64" />
+  <Access Scope="LocalVariable" UId="65">
+    <Symbol UId="66">
+      <Component Name="MUL VAL" UId="67" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="68" />
+  <Token Text="*" UId="69" />
+  <Blank Num="1" UId="70" />
+  <Access Scope="LiteralConstant" UId="71">
+    <Constant UId="72">
+      <ConstantValue UId="74">1000</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="75" />
+  <NewLine Num="1" UId="76" />
+  <Blank Num="4" UId="77" />
+  <Access Scope="LocalVariable" UId="78">
+    <Symbol UId="79">
+      <Component Name="TIME" UId="80" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="81" />
+  <Token Text=":=" UId="82" />
+  <Blank Num="1" UId="83" />
+  <Access Scope="Call" UId="84">
+    <Instruction Name="DINT_TO_TIME" UId="85">
+      <Token Text="(" UId="86" />
+      <Blank Num="1" UId="87" />
+      <NamelessParameter UId="88">
+        <Access Scope="LocalVariable" UId="89">
+          <Symbol UId="90">
+            <Component Name="MUL VAL" UId="91" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="93" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="94" />
+  <NewLine Num="1" UId="95" />
+  <Token Text="ELSIF" UId="96" />
+  <Blank Num="1" UId="97" />
+  <Token Text="NOT" UId="98" />
+  <Blank Num="1" UId="99" />
+  <Access Scope="LocalVariable" UId="100">
+    <Symbol UId="101">
+      <Component Name="MODE" UId="102" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="103" />
+  <Token Text="THEN" UId="104" />
+  <NewLine Num="1" UId="105" />
+  <Blank Num="4" UId="106" />
+  <Access Scope="LocalVariable" UId="107">
+    <Symbol UId="108">
+      <Component Name="MIN" UId="109" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="110" />
+  <Token Text=":=" UId="111" />
+  <Blank Num="1" UId="112" />
+  <Access Scope="Call" UId="113">
+    <Instruction Name="DINT_TO_INT" UId="114">
+      <Token Text="(" UId="115" />
+      <NamelessParameter UId="116">
+        <Token Text="(" UId="117" />
+        <Token Text="(" UId="118" />
+        <Access Scope="Call" UId="119">
+          <Instruction Name="TIME_TO_DINT" UId="120">
+            <Token Text="(" UId="121" />
+            <NamelessParameter UId="122">
+              <Access Scope="LocalVariable" UId="123">
+                <Symbol UId="124">
+                  <Component Name="TIME" UId="125" />
+                </Symbol>
+              </Access>
+            </NamelessParameter>
+            <Token Text=")" UId="127" />
+          </Instruction>
+        </Access>
+        <Blank Num="1" UId="128" />
+        <Token Text="/" UId="129" />
+        <Access Scope="LiteralConstant" UId="130">
+          <Constant UId="131">
+            <ConstantValue UId="133">1000</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text=")" UId="134" />
+        <Token Text="/" UId="135" />
+        <Access Scope="LiteralConstant" UId="136">
+          <Constant UId="137">
+            <ConstantValue UId="139">60</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text=")" UId="140" />
+      </NamelessParameter>
+      <Token Text=")" UId="142" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="143" />
+  <NewLine Num="1" UId="144" />
+  <Blank Num="4" UId="145" />
+  <Access Scope="LocalVariable" UId="146">
+    <Symbol UId="147">
+      <Component Name="SEC" UId="148" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="149" />
+  <Token Text=":=" UId="150" />
+  <Blank Num="1" UId="151" />
+  <Access Scope="Call" UId="152">
+    <Instruction Name="DINT_TO_INT" UId="153">
+      <Token Text="(" UId="154" />
+      <NamelessParameter UId="155">
+        <Token Text="(" UId="156" />
+        <Token Text="(" UId="157" />
+        <Access Scope="Call" UId="158">
+          <Instruction Name="TIME_TO_DINT" UId="159">
+            <Token Text="(" UId="160" />
+            <NamelessParameter UId="161">
+              <Access Scope="LocalVariable" UId="162">
+                <Symbol UId="163">
+                  <Component Name="TIME" UId="164" />
+                </Symbol>
+              </Access>
+            </NamelessParameter>
+            <Token Text=")" UId="166" />
+          </Instruction>
+        </Access>
+        <Token Text="/" UId="167" />
+        <Blank Num="1" UId="168" />
+        <Access Scope="LiteralConstant" UId="169">
+          <Constant UId="170">
+            <ConstantValue UId="172">1000</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="173" />
+        <Token Text="MOD" UId="174" />
+        <Blank Num="1" UId="175" />
+        <Access Scope="LiteralConstant" UId="176">
+          <Constant UId="177">
+            <ConstantValue UId="179">60</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text=")" UId="180" />
+        <Token Text=")" UId="181" />
+      </NamelessParameter>
+      <Token Text=")" UId="183" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="184" />
+  <NewLine Num="1" UId="185" />
+  <Token Text="END_IF" UId="186" />
+  <Token Text=";" UId="187" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="8" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="9" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

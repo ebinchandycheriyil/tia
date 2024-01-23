@@ -1,0 +1,397 @@
+﻿FUNCTION_BLOCK "TANK"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      HL : Bool;
+      LL : Bool;
+      "START PREPERATION" : Bool;
+      "START CIP" : Bool;
+      "DRAIN COMPLETE" : Bool;
+      "CHECK TEMP" : Bool;
+      "CHECK COND" : Bool;
+      INTERLOCK : Bool;
+      "INLET 2 CTRL" : Bool;
+      "PUMP OK" : Bool;
+      CONDUCTIVITY : Real;
+      "TANK TEMP" : Real;
+      "TEMP IN" : Real;
+      "TEMP OUT" : Real;
+   END_VAR
+
+   VAR_OUTPUT 
+      "INLET 1 OPEN" : Bool;
+      "INLET 2 OPEN" : Bool;
+      "OUTLET OPEN" : Bool;
+      CIRCULATION : Bool;
+      "START DOZING" : Bool;
+      FLUSH : Bool;
+      HEATING : Bool;
+      "PREP DONE" : Bool;
+      "CIP STEP DONE" : Bool;
+      STATUS : Int;
+   END_VAR
+
+   VAR_IN_OUT 
+      "TANK DATA" : "TANK DATA";
+   END_VAR
+
+   VAR 
+      "PRIP DONE PULSE" : Bool;
+      "START FLUSH" : Bool;
+      "FLUSH DELAY" {InstructionName := 'TP_TIME'; LibVersion := '1.0'} : TP_TIME;
+      "CIP CYCLE TIME" {InstructionName := 'TONR_TIME'; LibVersion := '1.0'} : TONR_TIME;
+   END_VAR
+
+   VAR_TEMP 
+      "CIP TIME" : Time;
+      "CIP TIME START" : Bool;
+      "CIP ET" : Time;
+   END_VAR
+
+
+BEGIN
+	
+	(*
+	STATUS = 0 IDLE
+	STATUS = 1 FILLING ONGOING
+	STATUS = 2 FILLING FINISHED HEATING STARTED
+	STATUS = 3 FILLING FINISHED HEATING AND DOSING STARTED
+	STATUS = 5 PREP COMPLETED FILLED
+	STATUS = 6 PREP COMPLETED NOT FILLED
+	STATUS = 7 PREP COMPLETED HEATED
+	STATUS = 8 PREP COMPLETED HEATED AND DOSING COMPLETE
+	STATUS = 8 STOPPED DUE TO INTERLOCK FAILURE
+	*)
+	REGION PREPERATION
+	    IF NOT #"START CIP" THEN
+	        //RESET OUTPUT WHEN START PREPERATION INPUT IS RESET
+	        IF NOT #"START PREPERATION" THEN
+	            #STATUS := 0;
+	            #"PRIP DONE PULSE" := FALSE;
+	            #"PREP DONE" := FALSE;
+	            #"INLET 1 OPEN" := FALSE;
+	            #"INLET 2 OPEN" := FALSE;
+	            #CIRCULATION := FALSE;
+	        END_IF;
+	        
+	        //In the first cycle of START PREPRTATION, if LL is true, it will skip to next step
+	        IF #"START PREPERATION" AND NOT #"PRIP DONE PULSE" THEN
+	            #"PRIP DONE PULSE" := TRUE;
+	            IF #LL THEN
+	                IF NOT #"CHECK COND" AND NOT #"CHECK TEMP" THEN
+	                    #"PREP DONE" := TRUE;
+	                    #STATUS := 6;
+	                END_IF;
+	            END_IF;
+	        END_IF;
+	        
+	        //if LL is not set, start the valves and motor according to interlock conditions
+	        IF #"START PREPERATION" AND (#STATUS = 0 OR #STATUS = 1) AND ((NOT #LL OR #"INLET 1 OPEN") OR #"CHECK TEMP") THEN
+	            IF NOT #INTERLOCK THEN
+	                #"INLET 1 OPEN" := TRUE;
+	                #"START FLUSH" := TRUE;
+	                #STATUS := 1;
+	                #"INLET 2 OPEN" := #"DRAIN COMPLETE";
+	                
+	            ELSE
+	                #STATUS := 9;
+	                #"INLET 1 OPEN" := FALSE;
+	                #"INLET 2 OPEN" := FALSE;
+	            END_IF;
+	        END_IF;
+	        
+	        //After starting, checking for the HL condition to stop the valves
+	        IF #"START PREPERATION" AND #STATUS = 1 THEN
+	            IF #HL AND NOT #"CHECK COND" AND NOT #"CHECK TEMP" THEN
+	                #STATUS := 5;
+	                #"INLET 1 OPEN" := FALSE;
+	                #"INLET 2 OPEN" := FALSE;
+	                #"PREP DONE" := TRUE;
+	            ELSIF #HL AND #"CHECK TEMP" AND NOT #"CHECK COND" THEN
+	                #STATUS := 2;
+	                #"INLET 1 OPEN" := FALSE;
+	                #"INLET 2 OPEN" := FALSE;
+	            ELSIF #HL AND #"CHECK TEMP" AND #"CHECK COND" THEN
+	                #STATUS := 3;
+	                #"INLET 1 OPEN" := FALSE;
+	                #"INLET 2 OPEN" := FALSE;
+	                
+	            END_IF;
+	        END_IF;
+	        //Tank Filled, Heating confitions.
+	        IF #"START PREPERATION" AND #STATUS = 2 AND NOT #"CHECK COND" AND #"CHECK TEMP" AND NOT #HEATING THEN
+	            #HEATING := TRUE;
+	            #"OUTLET OPEN" := TRUE;
+	            RESET_TIMER(#"FLUSH DELAY");
+	            #"START FLUSH" := TRUE;
+	        ELSIF #"START PREPERATION" AND #STATUS = 2 AND NOT #"CHECK COND" AND #"CHECK TEMP" AND #HEATING THEN
+	            IF NOT #FLUSH THEN
+	                #"INLET 2 OPEN" := TRUE;
+	            END_IF;
+	        END_IF;
+	        
+	        IF #"START PREPERATION" AND #STATUS = 2 AND #"TANK TEMP" > #"TANK DATA"."TANK TEMP SP" THEN
+	            #STATUS := 7;
+	            #"OUTLET OPEN" := FALSE;
+	            #"INLET 2 OPEN" := FALSE;
+	            #HEATING := FALSE;
+	            #"PREP DONE" := TRUE;
+	            
+	        END_IF;
+	        
+	        //Tank Filled, Heating and Dosing confitions.
+	        IF #"START PREPERATION" AND #STATUS = 3 THEN
+	            IF #"CHECK COND" AND #"CHECK TEMP" AND NOT #HEATING AND NOT #"START DOZING" THEN
+	                #HEATING := TRUE;
+	                #"OUTLET OPEN" := TRUE;
+	                RESET_TIMER(#"FLUSH DELAY");
+	                #"START FLUSH" := TRUE;
+	            ELSIF #"CHECK COND" AND #"CHECK TEMP" AND #HEATING THEN
+	                IF NOT #FLUSH THEN
+	                    #"INLET 2 OPEN" := TRUE;
+	                    #"START DOZING" := TRUE;
+	                END_IF;
+	            END_IF;
+	            
+	            IF #"TANK TEMP" > #"TANK DATA"."TANK TEMP SP" THEN
+	                #HEATING := FALSE;
+	            END_IF;
+	            
+	            IF #CONDUCTIVITY > #"TANK DATA"."COND SP" THEN
+	                #"START DOZING" := FALSE;
+	                
+	            END_IF;
+	            
+	            IF #"TANK TEMP" > #"TANK DATA"."TANK TEMP SP" AND #CONDUCTIVITY > #"TANK DATA"."COND SP" THEN
+	                #STATUS := 8;
+	                #"OUTLET OPEN" := FALSE;
+	                #"INLET 2 OPEN" := FALSE;
+	                #"PREP DONE" := TRUE;
+	            END_IF;
+	        END_IF;
+	        
+	        
+	
+	    END_IF;
+	
+	    
+	END_REGION
+	
+	REGION CIP CYCLE
+	    IF NOT #"START PREPERATION" THEN
+	        IF #"START CIP" THEN
+	            //CONDITION FOR RECUPERATION
+	            REGION Recuperation cip
+	                //CONDITION FOR RECUPERATION
+	                IF NOT #"CHECK COND" AND NOT #"CHECK TEMP" AND NOT #"CIP CYCLE TIME".Q THEN
+	                    #"INLET 1 OPEN" := (NOT #LL OR #"INLET 1 OPEN") AND NOT #HL;
+	                    IF #"INLET 1 OPEN" THEN
+	                        #"OUTLET OPEN" := FALSE;
+	                        #"START FLUSH" := TRUE;
+	                        #"INLET 2 OPEN" := #"DRAIN COMPLETE";
+	                        #CIRCULATION := FALSE;
+	                        #STATUS := 1;
+	                        
+	                    ELSE
+	                        #"INLET 2 OPEN" := FALSE;
+	                        #"OUTLET OPEN" := TRUE;
+	                        #CIRCULATION := #"PUMP OK";
+	                        #"CIP TIME START" := TRUE;
+	                        #STATUS := 0;
+	                    END_IF;
+	                ELSIF NOT #"CHECK COND" AND NOT #"CHECK TEMP" AND #"CIP CYCLE TIME".Q THEN
+	                    #"INLET 1 OPEN" := FALSE;
+	                    #"INLET 2 OPEN" := FALSE;
+	                    #"OUTLET OPEN" := FALSE;
+	                    #CIRCULATION := FALSE;
+	                    #"CIP STEP DONE" := TRUE;
+	                    RESET_TIMER(#"CIP CYCLE TIME");
+	                END_IF;
+	                
+	            END_REGION
+	
+	            //CONDITION FOR HOT WATER
+	            REGION HOT WATER
+	                
+	                IF #"CHECK TEMP" AND NOT #"CHECK COND" AND NOT #"CIP CYCLE TIME".Q THEN
+	                    #"INLET 1 OPEN" := (NOT #LL OR #"INLET 1 OPEN") AND NOT #HL;
+	                    IF #"INLET 1 OPEN" THEN
+	                        #"OUTLET OPEN" := FALSE;
+	                        #"START FLUSH" := TRUE;
+	                        #"INLET 2 OPEN" := #"DRAIN COMPLETE";
+	                        #CIRCULATION := FALSE;
+	                        #HEATING := TRUE;
+	                        #STATUS := 1;
+	                    ELSE
+	                        #STATUS := 0;
+	                        #"OUTLET OPEN" := TRUE;
+	                        
+	                        //HEATING AND CIP CYCLE TIME SECTION
+	                        IF #"TANK DATA"."TANK TEMP SP" - #"TANK DATA"."HYSTERIRIS TEMP" >= #"TANK TEMP" THEN
+	                            #HEATING := TRUE;
+	                            #CIRCULATION := FALSE;
+	                        ELSIF #"TANK DATA"."TANK TEMP SP" + #"TANK DATA"."HYSTERIRIS TEMP" <= #"TANK TEMP" THEN
+	                            #HEATING := FALSE;
+	                            #CIRCULATION := #"PUMP OK";
+	                        ELSIF #"TANK DATA"."TANK TEMP SP" + #"TANK DATA"."HYSTERIRIS TEMP">#"TANK TEMP"
+	                            AND #"TANK DATA"."TANK TEMP SP" - #"TANK DATA"."HYSTERIRIS TEMP" < #"TANK TEMP"  AND  NOT #HEATING THEN
+	                            #CIRCULATION := #"PUMP OK";
+	                       
+	                            
+	                        END_IF;
+	                        
+	                        
+	                        //RETURN TEMPERATURE SELECTION
+	                        IF #"TANK DATA"."RETURN SP" <= #"TEMP OUT" AND #CIRCULATION THEN
+	                            #"INLET 2 OPEN" := TRUE;
+	                        ELSIF #"TANK DATA"."RETURN SP" > #"TEMP OUT" AND #CIRCULATION THEN
+	                            #"INLET 2 OPEN" := FALSE;
+	                        ELSIF #HEATING OR (NOT #"PUMP OK" AND #"OUTLET OPEN")  THEN
+	                            #"INLET 2 OPEN" := TRUE;
+	                        END_IF;
+	                        
+	                        // CIP TIMER ONLY WORKS WHEN RETURN TEMP> RETURN TEMP SP
+	                        #"CIP TIME START" := #CIRCULATION AND #"INLET 2 OPEN" AND #"PUMP OK";
+	                      
+	                        
+	                    END_IF;
+	                ELSIF #"CHECK TEMP" AND NOT #"CHECK COND" AND #"CIP CYCLE TIME".Q THEN
+	                    #"INLET 1 OPEN" := FALSE;
+	                    #"INLET 2 OPEN" := FALSE;
+	                    #"OUTLET OPEN" := FALSE;
+	                    #CIRCULATION := FALSE;
+	                    RESET_TIMER(#"CIP CYCLE TIME");
+	                    #HEATING := FALSE;
+	                    #"CIP STEP DONE" := TRUE;
+	                END_IF;
+	                END_REGION
+	                
+	            //CONDITION FOR ACID AND CAUSTIC
+	                REGION ACID AND CAUSTIC
+	                    IF #"CHECK COND" AND #"CHECK TEMP" AND NOT #"CIP CYCLE TIME".Q THEN
+	                        #"INLET 1 OPEN" := (NOT #LL OR #"INLET 1 OPEN") AND NOT #HL;
+	                        IF #"INLET 1 OPEN" THEN
+	                            #"OUTLET OPEN" := FALSE;
+	                            #"START FLUSH" := TRUE;
+	                            #"INLET 2 OPEN" := #"DRAIN COMPLETE";
+	                            #CIRCULATION := FALSE;
+	                            #HEATING := #"DRAIN COMPLETE";
+	                            #STATUS := 1;
+	                            #"START DOZING" := FALSE;
+	                        ELSE
+	                            #STATUS := 0;
+	                            #"OUTLET OPEN" := TRUE;
+	                            
+	                            //HEATING AND CIP CYCLE TIME SECTION
+	                            IF #"TANK DATA"."TANK TEMP SP" - #"TANK DATA"."HYSTERIRIS TEMP" >= #"TANK TEMP"  AND NOT #CIRCULATION THEN
+	                                #HEATING := TRUE;
+	                                #CIRCULATION := FALSE;
+	                                #"INLET 2 OPEN" := TRUE;
+	                            ELSIF #"TANK DATA"."TANK TEMP SP" + #"TANK DATA"."HYSTERIRIS TEMP" <= #"TANK TEMP" THEN
+	                                #HEATING := FALSE;
+	                            END_IF;
+	                            //START DOZING BEFORE CIRCULATION
+	                            IF #"TANK DATA"."COND SP" - #"TANK DATA"."HYSTERISIS COND" >= #CONDUCTIVITY AND NOT #CIRCULATION THEN
+	                                #"START DOZING" := TRUE;
+	                                #CIRCULATION := FALSE;
+	                                
+	                            ELSIF #"TANK DATA"."COND SP" + #"TANK DATA"."HYSTERISIS COND" <= #CONDUCTIVITY THEN
+	                                #"START DOZING" := FALSE;
+	                            END_IF;
+	                            
+	                            #CIRCULATION := NOT #HEATING AND  (NOT #"START DOZING" OR #CIRCULATION) AND #"PUMP OK";
+	                            
+	                            #"CIP TIME START":=#CIRCULATION AND #"TANK DATA"."COND SP" - #"TANK DATA"."HYSTERISIS COND" < #CONDUCTIVITY AND #"PUMP OK" ;
+	                            //DOZING WHILE CIRCULATION
+	                            IF #CIRCULATION AND #"TANK DATA"."COND SP" - #"TANK DATA"."HYSTERISIS COND" > #CONDUCTIVITY THEN
+	                                #"START DOZING" := TRUE;
+	                            ELSIF #CIRCULATION AND #"TANK DATA"."COND SP" + #"TANK DATA"."HYSTERISIS COND" < #CONDUCTIVITY THEN
+	                                #"START DOZING" := FALSE;
+	                            END_IF;
+	                                
+	                            IF #"TANK DATA"."RETURN SP" <= #CONDUCTIVITY AND #CIRCULATION THEN
+	                                #"INLET 2 OPEN" := TRUE;
+	                            ELSIF #"TANK DATA"."RETURN SP" > #CONDUCTIVITY AND #CIRCULATION THEN
+	                                #"INLET 2 OPEN" := FALSE;
+	                            ELSIF #HEATING OR #"START DOZING" THEN
+	                                #"INLET 2 OPEN" := TRUE;
+	                            END_IF;
+	                            
+	                           
+	                        END_IF;
+	                        
+	                        
+	                    ELSIF #"CHECK TEMP" AND #"CHECK COND" AND #"CIP CYCLE TIME".Q THEN
+	                        #"INLET 1 OPEN" := FALSE;
+	                        #"INLET 2 OPEN" := FALSE;
+	                        #"OUTLET OPEN" := FALSE;
+	                        RESET_TIMER(#"CIP CYCLE TIME");
+	                        #HEATING := FALSE;
+	                        #"CIP STEP DONE" := TRUE;
+	                    END_IF;
+	                END_REGION
+	
+	            ELSE
+	                #"INLET 1 OPEN" := FALSE;
+	                #"INLET 2 OPEN" := FALSE;
+	                #"OUTLET OPEN" := FALSE;
+	                #CIRCULATION := FALSE;
+	                #"START DOZING" := FALSE;
+	                #FLUSH := FALSE;
+	                #HEATING := FALSE;
+	                #"CIP STEP DONE" := FALSE;
+	                
+	            END_IF;
+	     
+	        END_IF;
+	  
+	    
+	    
+	END_REGION
+	
+	//CONTROL FOR INLET FROM OUTSIDE WHEN THE CYCLE IS NOT SELECTED ON THIS BLOCK
+	REGION INLET 2 CONTROL FORMS OUTSIDE
+	    IF NOT #"START CIP" AND NOT #"START PREPERATION" AND #"INLET 2 CTRL" THEN
+	        #"INLET 2 OPEN" := TRUE;
+	        ELSIF NOT #"START CIP" AND NOT #"START PREPERATION" AND NOT #"INLET 2 CTRL" THEN
+	        #"INLET 2 OPEN" := FALSE;
+	    END_IF;
+	    
+	END_REGION
+	
+	//TIMERS USED. THEY ARE ENABLED FROM BITS CONROLLED FROM THE PROGRAM ABOVE
+	REGION TIMERS
+	    //timer outside the IF CONDITIONS
+	    
+	    #"FLUSH DELAY"(IN := #"START FLUSH",
+	                   PT := T#15S,
+	                   Q => #"FLUSH"); 
+	    
+	    #"START FLUSH" := #"FLUSH DELAY".Q;
+	    "TIME CONV"(MODE := TRUE,
+	                MIN := #"TANK DATA"."CYCLE TIME MIN",
+	                SEC := #"TANK DATA"."CYCLE TIME SEC",
+	                "TIME" := #"CIP TIME");
+	    
+	    #"CIP CYCLE TIME"(IN := #"CIP TIME START",
+	                      PT := #"CIP TIME");
+	    #"CIP ET" := #"CIP TIME" - #"CIP CYCLE TIME".ET;
+	    "TIME CONV"(MODE := FALSE,
+	                MIN := #"TANK DATA"."ELAPSED MIN",
+	                SEC := #"TANK DATA"."ELAPSED SEC",
+	                "TIME" := #"CIP ET");
+	    IF #"CIP CYCLE TIME".Q THEN
+	        #"CIP TIME START" := false;
+	        // Statement section IF
+	        ;
+	    END_IF;
+	    
+	    
+	END_REGION
+	
+	
+	
+	
+	
+END_FUNCTION_BLOCK
+

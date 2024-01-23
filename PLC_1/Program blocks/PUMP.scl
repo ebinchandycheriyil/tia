@@ -1,0 +1,91 @@
+﻿FUNCTION_BLOCK "PUMP"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      RUN : Bool;
+      "RUN FB" : Bool;
+      INTERLOCK : Bool;
+      TRIP : Bool;
+      "SPEED SELECT" : Bool;
+      ACKOWLEDGE : Bool;
+      "SLOW SPEED SP" : Int;
+   END_VAR
+
+   VAR_OUTPUT 
+      "START OUT" : Bool;
+      FAULT : Bool;
+      STATUS : Byte;
+      SPEED : Int;
+      "STATUS OK" : Bool;
+   END_VAR
+
+   VAR_IN_OUT 
+      AM : "AM CTRL";
+   END_VAR
+
+   VAR 
+      "RUN FB DELAY" {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      "STARTING DELAY" {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      "STARTING DELAY TIME" { S7_SetPoint := 'True'} : Time;
+   END_VAR
+
+
+BEGIN
+	REGION #RUN STOP 
+	    //FAULT CONDITION
+	    IF (#ACKOWLEDGE) THEN
+	        #FAULT := FALSE;
+	        #STATUS := 16#0000;
+	    END_IF;
+	    IF #INTERLOCK OR #TRIP AND (#"START OUT" OR #AM."AUTO/MAN") THEN
+	        #FAULT := TRUE;
+	        #STATUS.%X0 := #INTERLOCK;
+	        #STATUS.%X1 := #TRIP;
+	    END_IF;
+	    
+	    //RUN FEEDBACK CONDITION
+	    #"RUN FB DELAY"(IN := #"START OUT" AND NOT #"RUN FB",
+	                    PT := T#5S);
+	    IF #"RUN FB DELAY".Q THEN
+	        #FAULT := TRUE;
+	        #STATUS.%X2 := TRUE;
+	        
+	    END_IF;
+	    
+	    //RUN CONDITION AUTO
+	    #"STARTING DELAY"(IN := #RUN AND #AM."AUTO/MAN" AND NOT #"FAULT",
+	                      PT := #"STARTING DELAY TIME");
+	    IF #"STARTING DELAY".Q THEN
+	        #"START OUT" := TRUE;
+	    ELSIF (NOT #RUN AND #AM."AUTO/MAN") OR #FAULT THEN
+	        #"START OUT" := FALSE;
+	    END_IF;
+	    
+	    //MOTOR STATUS OK
+	    #"STATUS OK" := NOT #TRIP AND #AM."AUTO/MAN" AND NOT #FAULT;
+	    
+	    // RUN MANUAL
+	    IF NOT #AM."AUTO/MAN" THEN
+	        #"START OUT" := (#AM."MAN START" OR #"START OUT") AND NOT #AM."MAN STOP" AND NOT #FAULT;
+	        
+	    END_IF;
+	    #AM."MAN START" := FALSE;
+	    #AM."MAN STOP" := FALSE;
+	END_REGION
+	
+	REGION #SPEED
+	    IF #"START OUT" AND NOT #FAULT THEN
+	        IF #"SPEED SELECT" THEN
+	            #SPEED := #"SLOW SPEED SP";
+	        ELSE
+	            #SPEED := 27648;
+	        END_IF;
+	    ELSE
+	        #SPEED := 0;
+	    END_IF;
+	    
+	END_REGION
+	
+	
+END_FUNCTION_BLOCK
+

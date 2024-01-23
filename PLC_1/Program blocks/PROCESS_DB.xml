@@ -1,0 +1,1365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <AutoNumber>true</AutoNumber>
+      <DBAccessibleFromOPCUA>true</DBAccessibleFromOPCUA>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <InstanceOfName>PROCESS</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="RECUP TANK" Datatype="&quot;TANK&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="HL" Datatype="Bool" />
+          <Member Name="LL" Datatype="Bool" />
+          <Member Name="START PREPERATION" Datatype="Bool" />
+          <Member Name="START CIP" Datatype="Bool" />
+          <Member Name="DRAIN COMPLETE" Datatype="Bool" />
+          <Member Name="CHECK TEMP" Datatype="Bool" />
+          <Member Name="CHECK COND" Datatype="Bool" />
+          <Member Name="INTERLOCK" Datatype="Bool" />
+          <Member Name="INLET 2 CTRL" Datatype="Bool" />
+          <Member Name="PUMP OK" Datatype="Bool" />
+          <Member Name="CONDUCTIVITY" Datatype="Real" />
+          <Member Name="TANK TEMP" Datatype="Real" />
+          <Member Name="TEMP IN" Datatype="Real" />
+          <Member Name="TEMP OUT" Datatype="Real" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="INLET 1 OPEN" Datatype="Bool" />
+          <Member Name="INLET 2 OPEN" Datatype="Bool" />
+          <Member Name="OUTLET OPEN" Datatype="Bool" />
+          <Member Name="CIRCULATION" Datatype="Bool" />
+          <Member Name="START DOZING" Datatype="Bool" />
+          <Member Name="FLUSH" Datatype="Bool" />
+          <Member Name="HEATING" Datatype="Bool" />
+          <Member Name="PREP DONE" Datatype="Bool" />
+          <Member Name="CIP STEP DONE" Datatype="Bool" />
+          <Member Name="STATUS" Datatype="Int" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="TANK DATA" Datatype="&quot;TANK DATA&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static">
+          <Member Name="PRIP DONE PULSE" Datatype="Bool" />
+          <Member Name="START FLUSH" Datatype="Bool" />
+          <Member Name="FLUSH DELAY" Datatype="TP_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="CIP CYCLE TIME" Datatype="TONR_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="HOT WATER TANK" Datatype="&quot;TANK&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="HL" Datatype="Bool" />
+          <Member Name="LL" Datatype="Bool" />
+          <Member Name="START PREPERATION" Datatype="Bool" />
+          <Member Name="START CIP" Datatype="Bool" />
+          <Member Name="DRAIN COMPLETE" Datatype="Bool" />
+          <Member Name="CHECK TEMP" Datatype="Bool" />
+          <Member Name="CHECK COND" Datatype="Bool" />
+          <Member Name="INTERLOCK" Datatype="Bool" />
+          <Member Name="INLET 2 CTRL" Datatype="Bool" />
+          <Member Name="PUMP OK" Datatype="Bool" />
+          <Member Name="CONDUCTIVITY" Datatype="Real" />
+          <Member Name="TANK TEMP" Datatype="Real" />
+          <Member Name="TEMP IN" Datatype="Real" />
+          <Member Name="TEMP OUT" Datatype="Real" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="INLET 1 OPEN" Datatype="Bool" />
+          <Member Name="INLET 2 OPEN" Datatype="Bool" />
+          <Member Name="OUTLET OPEN" Datatype="Bool" />
+          <Member Name="CIRCULATION" Datatype="Bool" />
+          <Member Name="START DOZING" Datatype="Bool" />
+          <Member Name="FLUSH" Datatype="Bool" />
+          <Member Name="HEATING" Datatype="Bool" />
+          <Member Name="PREP DONE" Datatype="Bool" />
+          <Member Name="CIP STEP DONE" Datatype="Bool" />
+          <Member Name="STATUS" Datatype="Int" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="TANK DATA" Datatype="&quot;TANK DATA&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static">
+          <Member Name="PRIP DONE PULSE" Datatype="Bool" />
+          <Member Name="START FLUSH" Datatype="Bool" />
+          <Member Name="FLUSH DELAY" Datatype="TP_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="CIP CYCLE TIME" Datatype="TONR_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="CAUSTIC TANK" Datatype="&quot;TANK&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="HL" Datatype="Bool" />
+          <Member Name="LL" Datatype="Bool" />
+          <Member Name="START PREPERATION" Datatype="Bool" />
+          <Member Name="START CIP" Datatype="Bool" />
+          <Member Name="DRAIN COMPLETE" Datatype="Bool" />
+          <Member Name="CHECK TEMP" Datatype="Bool" />
+          <Member Name="CHECK COND" Datatype="Bool" />
+          <Member Name="INTERLOCK" Datatype="Bool" />
+          <Member Name="INLET 2 CTRL" Datatype="Bool" />
+          <Member Name="PUMP OK" Datatype="Bool" />
+          <Member Name="CONDUCTIVITY" Datatype="Real" />
+          <Member Name="TANK TEMP" Datatype="Real" />
+          <Member Name="TEMP IN" Datatype="Real" />
+          <Member Name="TEMP OUT" Datatype="Real" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="INLET 1 OPEN" Datatype="Bool" />
+          <Member Name="INLET 2 OPEN" Datatype="Bool" />
+          <Member Name="OUTLET OPEN" Datatype="Bool" />
+          <Member Name="CIRCULATION" Datatype="Bool" />
+          <Member Name="START DOZING" Datatype="Bool" />
+          <Member Name="FLUSH" Datatype="Bool" />
+          <Member Name="HEATING" Datatype="Bool" />
+          <Member Name="PREP DONE" Datatype="Bool" />
+          <Member Name="CIP STEP DONE" Datatype="Bool" />
+          <Member Name="STATUS" Datatype="Int" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="TANK DATA" Datatype="&quot;TANK DATA&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static">
+          <Member Name="PRIP DONE PULSE" Datatype="Bool" />
+          <Member Name="START FLUSH" Datatype="Bool" />
+          <Member Name="FLUSH DELAY" Datatype="TP_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="CIP CYCLE TIME" Datatype="TONR_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="ACID TANK" Datatype="&quot;TANK&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="HL" Datatype="Bool" />
+          <Member Name="LL" Datatype="Bool" />
+          <Member Name="START PREPERATION" Datatype="Bool" />
+          <Member Name="START CIP" Datatype="Bool" />
+          <Member Name="DRAIN COMPLETE" Datatype="Bool" />
+          <Member Name="CHECK TEMP" Datatype="Bool" />
+          <Member Name="CHECK COND" Datatype="Bool" />
+          <Member Name="INTERLOCK" Datatype="Bool" />
+          <Member Name="INLET 2 CTRL" Datatype="Bool" />
+          <Member Name="PUMP OK" Datatype="Bool" />
+          <Member Name="CONDUCTIVITY" Datatype="Real" />
+          <Member Name="TANK TEMP" Datatype="Real" />
+          <Member Name="TEMP IN" Datatype="Real" />
+          <Member Name="TEMP OUT" Datatype="Real" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="INLET 1 OPEN" Datatype="Bool" />
+          <Member Name="INLET 2 OPEN" Datatype="Bool" />
+          <Member Name="OUTLET OPEN" Datatype="Bool" />
+          <Member Name="CIRCULATION" Datatype="Bool" />
+          <Member Name="START DOZING" Datatype="Bool" />
+          <Member Name="FLUSH" Datatype="Bool" />
+          <Member Name="HEATING" Datatype="Bool" />
+          <Member Name="PREP DONE" Datatype="Bool" />
+          <Member Name="CIP STEP DONE" Datatype="Bool" />
+          <Member Name="STATUS" Datatype="Int" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="TANK DATA" Datatype="&quot;TANK DATA&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static">
+          <Member Name="PRIP DONE PULSE" Datatype="Bool" />
+          <Member Name="START FLUSH" Datatype="Bool" />
+          <Member Name="FLUSH DELAY" Datatype="TP_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="CIP CYCLE TIME" Datatype="TONR_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="RECUP PREP DONE" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HOT WTR PREP DONE" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="CAUSTIC PREP DONE" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="ACID PREP DONE" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="PREP FINISHED PULSE" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="P1" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="P2" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="P3" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="P4" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="P5" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="P6" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="P7" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="P8" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="P9" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="P10" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="CIP_STARTED" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="3 CIP FINISH PULSE" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="5 CIP FINISH PULSE" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="7 CIP FINISH PULSE" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="PUMP OK" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="RECUP CIP DONE" Datatype="Array[0..4] of Bool" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HOT WTR CIP DONE" Datatype="Array[0..4] of Bool" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="CAUSTIC CIP DONE" Datatype="Array[0..4] of Bool" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="ACID CIP DONE" Datatype="Array[0..4] of Bool" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="WATER FLUSH CIP DONE" Datatype="Array[0..4] of Bool" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="CIP_STEP SELECTED" Datatype="Int" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="CURCULATION PUMP" Datatype="&quot;PUMP&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="RUN" Datatype="Bool" />
+          <Member Name="RUN FB" Datatype="Bool" />
+          <Member Name="INTERLOCK" Datatype="Bool" />
+          <Member Name="TRIP" Datatype="Bool" />
+          <Member Name="SPEED SELECT" Datatype="Bool" />
+          <Member Name="ACKOWLEDGE" Datatype="Bool" />
+          <Member Name="SLOW SPEED SP" Datatype="Int" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+          <Member Name="FAULT" Datatype="Bool" />
+          <Member Name="STATUS" Datatype="Byte" />
+          <Member Name="SPEED" Datatype="Int" />
+          <Member Name="STATUS OK" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="AM" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static">
+          <Member Name="RUN FB DELAY" Datatype="TON_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="STARTING DELAY" Datatype="TON_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="STARTING DELAY TIME" Datatype="Time" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="BFV1 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV2 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV3 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV4 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV5 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV6 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV7 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV8 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV9 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV10 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV11 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV12 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV13 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV14 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV15 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV16 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV17 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV18 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV19 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="BFV20 CTRL" Datatype="&quot;VALVE CTRL&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="AUTO START" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="CTRL" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static" />
+      </Sections>
+    </Member>
+    <Member Name="CAUSTIC DOSING" Datatype="&quot;PUMP&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="RUN" Datatype="Bool" />
+          <Member Name="RUN FB" Datatype="Bool" />
+          <Member Name="INTERLOCK" Datatype="Bool" />
+          <Member Name="TRIP" Datatype="Bool" />
+          <Member Name="SPEED SELECT" Datatype="Bool" />
+          <Member Name="ACKOWLEDGE" Datatype="Bool" />
+          <Member Name="SLOW SPEED SP" Datatype="Int" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+          <Member Name="FAULT" Datatype="Bool" />
+          <Member Name="STATUS" Datatype="Byte" />
+          <Member Name="SPEED" Datatype="Int" />
+          <Member Name="STATUS OK" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="AM" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static">
+          <Member Name="RUN FB DELAY" Datatype="TON_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="STARTING DELAY" Datatype="TON_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="STARTING DELAY TIME" Datatype="Time" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="ACID DOSING" Datatype="&quot;PUMP&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="RUN" Datatype="Bool" />
+          <Member Name="RUN FB" Datatype="Bool" />
+          <Member Name="INTERLOCK" Datatype="Bool" />
+          <Member Name="TRIP" Datatype="Bool" />
+          <Member Name="SPEED SELECT" Datatype="Bool" />
+          <Member Name="ACKOWLEDGE" Datatype="Bool" />
+          <Member Name="SLOW SPEED SP" Datatype="Int" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+          <Member Name="FAULT" Datatype="Bool" />
+          <Member Name="STATUS" Datatype="Byte" />
+          <Member Name="SPEED" Datatype="Int" />
+          <Member Name="STATUS OK" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="AM" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static">
+          <Member Name="RUN FB DELAY" Datatype="TON_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="STARTING DELAY" Datatype="TON_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="STARTING DELAY TIME" Datatype="Time" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="RETURN PUMP 1" Datatype="&quot;PUMP&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="RUN" Datatype="Bool" />
+          <Member Name="RUN FB" Datatype="Bool" />
+          <Member Name="INTERLOCK" Datatype="Bool" />
+          <Member Name="TRIP" Datatype="Bool" />
+          <Member Name="SPEED SELECT" Datatype="Bool" />
+          <Member Name="ACKOWLEDGE" Datatype="Bool" />
+          <Member Name="SLOW SPEED SP" Datatype="Int" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+          <Member Name="FAULT" Datatype="Bool" />
+          <Member Name="STATUS" Datatype="Byte" />
+          <Member Name="SPEED" Datatype="Int" />
+          <Member Name="STATUS OK" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="AM" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static">
+          <Member Name="RUN FB DELAY" Datatype="TON_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="STARTING DELAY" Datatype="TON_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="STARTING DELAY TIME" Datatype="Time" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="RETURN PUMP 2" Datatype="&quot;PUMP&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="RUN" Datatype="Bool" />
+          <Member Name="RUN FB" Datatype="Bool" />
+          <Member Name="INTERLOCK" Datatype="Bool" />
+          <Member Name="TRIP" Datatype="Bool" />
+          <Member Name="SPEED SELECT" Datatype="Bool" />
+          <Member Name="ACKOWLEDGE" Datatype="Bool" />
+          <Member Name="SLOW SPEED SP" Datatype="Int" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+          <Member Name="FAULT" Datatype="Bool" />
+          <Member Name="STATUS" Datatype="Byte" />
+          <Member Name="SPEED" Datatype="Int" />
+          <Member Name="STATUS OK" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="AM" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static">
+          <Member Name="RUN FB DELAY" Datatype="TON_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="STARTING DELAY" Datatype="TON_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="STARTING DELAY TIME" Datatype="Time" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="RETURN PUMP 3" Datatype="&quot;PUMP&quot;" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="RUN" Datatype="Bool" />
+          <Member Name="RUN FB" Datatype="Bool" />
+          <Member Name="INTERLOCK" Datatype="Bool" />
+          <Member Name="TRIP" Datatype="Bool" />
+          <Member Name="SPEED SELECT" Datatype="Bool" />
+          <Member Name="ACKOWLEDGE" Datatype="Bool" />
+          <Member Name="SLOW SPEED SP" Datatype="Int" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="START OUT" Datatype="Bool" />
+          <Member Name="FAULT" Datatype="Bool" />
+          <Member Name="STATUS" Datatype="Byte" />
+          <Member Name="SPEED" Datatype="Int" />
+          <Member Name="STATUS OK" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut">
+          <Member Name="AM" Datatype="&quot;AM CTRL&quot;">
+            <Sections>
+              <Section Name="None" />
+            </Sections>
+          </Member>
+        </Section>
+        <Section Name="Static">
+          <Member Name="RUN FB DELAY" Datatype="TON_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="STARTING DELAY" Datatype="TON_TIME" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="PT" Datatype="Time" />
+                <Member Name="ET" Datatype="Time" />
+                <Member Name="IN" Datatype="Bool" />
+                <Member Name="Q" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="STARTING DELAY TIME" Datatype="Time" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="WATER FLUSH" Datatype="TON_TIME" Version="1.0" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="PT" Datatype="Time" />
+          <Member Name="ET" Datatype="Time" />
+          <Member Name="IN" Datatype="Bool" />
+          <Member Name="Q" Datatype="Bool" />
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>PROCESS_DB</Name>
+      <Namespace />
+      <Number>4</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>
