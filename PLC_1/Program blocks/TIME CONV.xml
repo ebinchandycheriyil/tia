@@ -160,107 +160,112 @@
   <Token Text="THEN" UId="104" />
   <NewLine Num="1" UId="105" />
   <Blank Num="4" UId="106" />
-  <Access Scope="LocalVariable" UId="107">
-    <Symbol UId="108">
-      <Component Name="MIN" UId="109" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="107">
+    <Text UId="108">blank</Text>
+  </LineComment>
+  <NewLine Num="1" UId="109" />
+  <Blank Num="4" UId="110" />
+  <Access Scope="LocalVariable" UId="111">
+    <Symbol UId="112">
+      <Component Name="MIN" UId="113" />
     </Symbol>
   </Access>
-  <Blank Num="1" UId="110" />
-  <Token Text=":=" UId="111" />
-  <Blank Num="1" UId="112" />
-  <Access Scope="Call" UId="113">
-    <Instruction Name="DINT_TO_INT" UId="114">
-      <Token Text="(" UId="115" />
-      <NamelessParameter UId="116">
-        <Token Text="(" UId="117" />
-        <Token Text="(" UId="118" />
-        <Access Scope="Call" UId="119">
-          <Instruction Name="TIME_TO_DINT" UId="120">
-            <Token Text="(" UId="121" />
-            <NamelessParameter UId="122">
-              <Access Scope="LocalVariable" UId="123">
-                <Symbol UId="124">
-                  <Component Name="TIME" UId="125" />
+  <Blank Num="1" UId="114" />
+  <Token Text=":=" UId="115" />
+  <Blank Num="1" UId="116" />
+  <Access Scope="Call" UId="117">
+    <Instruction Name="DINT_TO_INT" UId="118">
+      <Token Text="(" UId="119" />
+      <NamelessParameter UId="120">
+        <Token Text="(" UId="121" />
+        <Token Text="(" UId="122" />
+        <Access Scope="Call" UId="123">
+          <Instruction Name="TIME_TO_DINT" UId="124">
+            <Token Text="(" UId="125" />
+            <NamelessParameter UId="126">
+              <Access Scope="LocalVariable" UId="127">
+                <Symbol UId="128">
+                  <Component Name="TIME" UId="129" />
                 </Symbol>
               </Access>
             </NamelessParameter>
-            <Token Text=")" UId="127" />
+            <Token Text=")" UId="131" />
           </Instruction>
         </Access>
-        <Blank Num="1" UId="128" />
-        <Token Text="/" UId="129" />
-        <Access Scope="LiteralConstant" UId="130">
-          <Constant UId="131">
-            <ConstantValue UId="133">1000</ConstantValue>
+        <Blank Num="1" UId="132" />
+        <Token Text="/" UId="133" />
+        <Access Scope="LiteralConstant" UId="134">
+          <Constant UId="135">
+            <ConstantValue UId="137">1000</ConstantValue>
           </Constant>
         </Access>
-        <Token Text=")" UId="134" />
-        <Token Text="/" UId="135" />
-        <Access Scope="LiteralConstant" UId="136">
-          <Constant UId="137">
-            <ConstantValue UId="139">60</ConstantValue>
+        <Token Text=")" UId="138" />
+        <Token Text="/" UId="139" />
+        <Access Scope="LiteralConstant" UId="140">
+          <Constant UId="141">
+            <ConstantValue UId="143">60</ConstantValue>
           </Constant>
         </Access>
-        <Token Text=")" UId="140" />
+        <Token Text=")" UId="144" />
       </NamelessParameter>
-      <Token Text=")" UId="142" />
+      <Token Text=")" UId="146" />
     </Instruction>
   </Access>
-  <Token Text=";" UId="143" />
-  <NewLine Num="1" UId="144" />
-  <Blank Num="4" UId="145" />
-  <Access Scope="LocalVariable" UId="146">
-    <Symbol UId="147">
-      <Component Name="SEC" UId="148" />
+  <Token Text=";" UId="147" />
+  <NewLine Num="1" UId="148" />
+  <Blank Num="4" UId="149" />
+  <Access Scope="LocalVariable" UId="150">
+    <Symbol UId="151">
+      <Component Name="SEC" UId="152" />
     </Symbol>
   </Access>
-  <Blank Num="1" UId="149" />
-  <Token Text=":=" UId="150" />
-  <Blank Num="1" UId="151" />
-  <Access Scope="Call" UId="152">
-    <Instruction Name="DINT_TO_INT" UId="153">
-      <Token Text="(" UId="154" />
-      <NamelessParameter UId="155">
-        <Token Text="(" UId="156" />
-        <Token Text="(" UId="157" />
-        <Access Scope="Call" UId="158">
-          <Instruction Name="TIME_TO_DINT" UId="159">
-            <Token Text="(" UId="160" />
-            <NamelessParameter UId="161">
-              <Access Scope="LocalVariable" UId="162">
-                <Symbol UId="163">
-                  <Component Name="TIME" UId="164" />
+  <Blank Num="1" UId="153" />
+  <Token Text=":=" UId="154" />
+  <Blank Num="1" UId="155" />
+  <Access Scope="Call" UId="156">
+    <Instruction Name="DINT_TO_INT" UId="157">
+      <Token Text="(" UId="158" />
+      <NamelessParameter UId="159">
+        <Token Text="(" UId="160" />
+        <Token Text="(" UId="161" />
+        <Access Scope="Call" UId="162">
+          <Instruction Name="TIME_TO_DINT" UId="163">
+            <Token Text="(" UId="164" />
+            <NamelessParameter UId="165">
+              <Access Scope="LocalVariable" UId="166">
+                <Symbol UId="167">
+                  <Component Name="TIME" UId="168" />
                 </Symbol>
               </Access>
             </NamelessParameter>
-            <Token Text=")" UId="166" />
+            <Token Text=")" UId="170" />
           </Instruction>
         </Access>
-        <Token Text="/" UId="167" />
-        <Blank Num="1" UId="168" />
-        <Access Scope="LiteralConstant" UId="169">
-          <Constant UId="170">
-            <ConstantValue UId="172">1000</ConstantValue>
+        <Token Text="/" UId="171" />
+        <Blank Num="1" UId="172" />
+        <Access Scope="LiteralConstant" UId="173">
+          <Constant UId="174">
+            <ConstantValue UId="176">1000</ConstantValue>
           </Constant>
         </Access>
-        <Blank Num="1" UId="173" />
-        <Token Text="MOD" UId="174" />
-        <Blank Num="1" UId="175" />
-        <Access Scope="LiteralConstant" UId="176">
-          <Constant UId="177">
-            <ConstantValue UId="179">60</ConstantValue>
+        <Blank Num="1" UId="177" />
+        <Token Text="MOD" UId="178" />
+        <Blank Num="1" UId="179" />
+        <Access Scope="LiteralConstant" UId="180">
+          <Constant UId="181">
+            <ConstantValue UId="183">60</ConstantValue>
           </Constant>
         </Access>
-        <Token Text=")" UId="180" />
-        <Token Text=")" UId="181" />
+        <Token Text=")" UId="184" />
+        <Token Text=")" UId="185" />
       </NamelessParameter>
-      <Token Text=")" UId="183" />
+      <Token Text=")" UId="187" />
     </Instruction>
   </Access>
-  <Token Text=";" UId="184" />
-  <NewLine Num="1" UId="185" />
-  <Token Text="END_IF" UId="186" />
-  <Token Text=";" UId="187" />
+  <Token Text=";" UId="188" />
+  <NewLine Num="1" UId="189" />
+  <Token Text="END_IF" UId="190" />
+  <Token Text=";" UId="191" />
 </StructuredText></NetworkSource>
           <ProgrammingLanguage>SCL</ProgrammingLanguage>
         </AttributeList>
