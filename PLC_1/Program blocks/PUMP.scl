@@ -64,7 +64,7 @@ BEGIN
 	    //MOTOR STATUS OK
 	    #"STATUS OK" := NOT #TRIP AND #AM."AUTO/MAN" AND NOT #FAULT;
 	    
-	    // RUN MANUAL
+	    // RUN MANUAL test comment from github
 	    IF NOT #AM."AUTO/MAN" THEN
 	        #"START OUT" := (#AM."MAN START" OR #"START OUT") AND NOT #AM."MAN STOP" AND NOT #FAULT;
 	        
